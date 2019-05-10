@@ -19,7 +19,21 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  '/': { view : 'pages/homepage' },
+  '/api/invoices': 'InvoiceController.getAllInvoices',
+  'post /api/register': [{action: 'user/register'}],
+  'post /api/login': [{action: 'user/login'}],
+  'get /api/me': [{policy: 'isAuthorised'}, {action: 'user/myProfile'}],
+  'post /api/invoices': [{action: 'invoice/createInvoice'}],
+  'delete /api/invoices/:invoice_id': [{action: 'invoice/deleteInvoice'}],
+  'put /api/invoices/:invoice_id/paid': [{action: 'invoice/markAsPaid'}],
+  'put /api/invoices/:invoice_id/unpaid': [{action: 'invoice/markAsUnpaid'}],
+  'post /api/invoices/:invoice_id/email': [{action: 'mailer/emailToClient'}],
+  
+  'get /invoice': [{action: 'invoice/createInvoice'}],
+  'get /mail': [{action: 'mailer/sendMail'}],
+  'get /viewInvoice': [{action: 'invoice/viewInvoice'}],
+
 
 
   /***************************************************************************

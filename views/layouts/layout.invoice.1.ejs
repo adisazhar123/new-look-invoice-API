@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+
+    <title>Hello, world!</title>
+    
+
+    <link rel="stylesheet" href="/styles/grid.css">
+
+    <style>      
+      .header {
+        height: 200px;
+        background-color: #0abde3;
+        color:#fff;
+        padding-left: 10px;
+        z-index: 100;
+      }
+
+      .client, .date, .invoice-info {
+        line-height: 3.5pt;
+      }
+
+      #price {
+        font-size: 32px;
+      }
+
+      hr {
+        color: #0abde3;
+        background-color: #0abde3;
+        height: 5px;        
+      }
+
+      table.td-no-border td {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      thead {
+        height: 60px;
+      }
+
+      th {
+        text-align: left;
+        padding: 15px;        
+      }
+
+      td {
+        text-align: left;
+        padding: 15px;
+        border-bottom: 2px solid #c8d6e5;
+      }
+
+      /* tr:nth-child(even){background-color: #f2f2f2} */
+
+      th {
+        background-color: #0abde3;
+        color: white;
+      }
+
+      /* .bg-img {
+        background-image: url('images/paid.png');
+        opacity: 0.2;
+      } */
+
+
+      .bg-img {
+        position: relative;
+        /* background: #5C97FF; */
+        overflow: hidden;
+      }
+
+      .bg-img:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 22%;
+        top: 0;
+        width: 53%;
+        height: 100%;
+        z-index: -100;
+        opacity: 0.15;
+        background-image: url('images/paid.png');
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+
+
+      
+
+    </style>
+
+    
+  </head>
+  <body>    
+    
+
+    <p><%= hello %></p>
+      
+      
+  </body>
+</html>

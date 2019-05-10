@@ -1,0 +1,109 @@
+<div class="bg-img">
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="header">
+            <table>
+                <tr>
+                    <td style="width: 80%">
+                        <h1>INVOICE</h1>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="" srcset="" height="120px"
+                        style="padding-bottom: 20px">     
+                    </td>
+                    
+                    <td>
+                        <p>
+                            Company Owner
+                        </p>
+                        <p>
+                            Company Email
+                        </p>
+                        <p>
+                            Company Address
+                        </p>
+                    </td>
+                </tr>                
+            </table>
+
+        </div>
+
+        <br>
+
+        <div class="bill-info">
+            <div class="row">
+                <div class="container">
+                    <table id="header" class="td-no-border">
+                        <tr>
+                            <th>Billed To</th>
+                            <th>Invoice Number</th>
+                            <th>Date of Issue</th>
+                            <th>Invoice Total</th>
+                        </tr>
+                        <tr>
+                            <td>                            
+                                <p><%= invoice.client_name %></p>
+                                <p><%= invoice.client_email %></p>
+                                <p>Pandugo II Blok Q-17 (todo)</p>                                
+                            </td>
+
+                            <td>
+                                <p>8hudfgy98s(todo)</p>                            
+                            </td>
+
+                            <td>
+                                <p>10/07/2014 (todo)</p>                                
+                            </td>
+
+                            <td>
+                                <p id="price">Rp <%= invoice.total_price %></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <div class="invoice-items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Unit Cost</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% items.forEach(function(item, i, arr) { -%>
+                        <tr>
+                            <td><%= item.name %></td>
+                            <td><%= item.price %></td>
+                        </tr>
+                    <% }); -%>
+                </tbody>
+            </table>                      
+        </div>
+
+        <div class="total">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3>Invoice Note</h3>
+                    <h4><%= invoice.project_name %></h4>
+                    <p>
+                        <%= invoice.project_description %>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p>Subtotal: Rp 40 000</p>
+                    <p>Total: Rp 100 000</p>
+                    <p>Tax: </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+

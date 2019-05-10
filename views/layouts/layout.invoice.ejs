@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+
+    <title>Hello, world!</title>
+    
+
+    <link rel="stylesheet" href="/styles/grid.css">
+
+    <style>      
+      .header {
+        height: 220px;
+        background-color: #0abde3;
+        color:#fff;
+        padding-left: 10px;
+        z-index: 100;
+      }
+
+      .client, .date, .invoice-info {
+        line-height: 3.5pt;
+      }
+
+      #price {
+        font-size: 32px;
+      }
+
+      hr {
+        color: #0abde3;
+        background-color: #0abde3;
+        height: 5px;        
+      }
+
+      table.td-no-border td {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      thead {
+        height: 60px;
+      }
+
+      th {
+        text-align: left;
+        padding: 15px;        
+      }
+
+      td {
+        text-align: left;
+        padding: 15px;
+        border-bottom: 2px solid #c8d6e5;
+      }
+
+      /* tr:nth-child(even){background-color: #f2f2f2} */
+
+      th {
+        background-color: #0abde3;
+        color: white;
+      }
+
+      /* .bg-img {
+        background-image: url('images/paid.png');
+        opacity: 0.2;
+      } */
+
+
+      .bg-img {
+        position: relative;
+        /* background: #5C97FF; */
+        overflow: hidden;
+      }
+
+      .bg-img:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 22%;
+        top: 0;
+        width: 53%;
+        height: 100%;
+        z-index: -100;
+        opacity: 0.15;
+        background-image: url('images/paid.png');
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+
+
+      
+
+    </style>
+
+    
+  </head>
+  <body>    
+    <div class="bg-img">
+      <div class="bootstrap-wrapper">
+          <div class="container">
+              <div class="header">
+                  <table>
+                      <tr>
+                          <td style="width: 80%">
+                              <h1>INVOICE</h1>
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="" srcset="" height="120px"
+                              style="padding-bottom: 20px">     
+                          </td>
+                          
+                          <td>
+                              <p>
+                                  Company Owner
+                              </p>
+                              <p>
+                                  Company Email
+                              </p>
+                              <p>
+                                  Company Address
+                              </p>
+                          </td>
+                      </tr>                
+                  </table>
+      
+              </div>
+      
+              <br>
+      
+              <div class="bill-info">
+                  <div class="row">
+                      <div class="container">
+                          <table id="header" class="td-no-border">
+                              <tr>
+                                  <th>Billed To</th>
+                                  <th>Invoice Number</th>
+                                  <th>Date of Issue</th>
+                                  <th>Invoice Total</th>
+                              </tr>
+                              <tr>
+                                  <td>                            
+                                      <p><%= invoice.client_name %></p>
+                                      <p><%= invoice.client_email %></p>
+                                      <p>Pandugo II Blok Q-17 (todo)</p>                                
+                                  </td>
+      
+                                  <td>
+                                      <p>8hudfgy98s(todo)</p>                            
+                                  </td>
+      
+                                  <td>
+                                      <p>10/07/2014 (todo)</p>                                
+                                  </td>
+      
+                                  <td>
+                                      <p id="price">Rp <%= invoice.total_price %></p>
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+      
+              <br>
+              <hr>
+              <br>
+      
+              <div class="invoice-items">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Description</th>
+                              <th>Unit Cost</th>
+                              <th>Amount</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% items.forEach(function(item, i, arr) { -%>
+                              <tr>
+                                  <td><%= item.name %></td>
+                                  <td><%= item.price %></td>
+                              </tr>
+                          <% }); -%>
+                      </tbody>
+                  </table>                      
+              </div>
+      
+              <div class="total">
+                  <div class="row">
+                      <div class="col-md-9">
+                          <h3>Invoice Note</h3>
+                          <h4><%= invoice.project_name %></h4>
+                          <p>
+                              <%= invoice.project_description %>
+                          </p>
+                      </div>
+                      <div class="col-md-3">
+                          <p>Subtotal: Rp 40 000</p>
+                          <p>Total: Rp 100 000</p>
+                          <p>Tax: </p>
+                      </div>
+                  </div>
+              </div>
+              
+          </div>
+      </div>
+      </div>
+      
+      
+  </body>
+</html>
