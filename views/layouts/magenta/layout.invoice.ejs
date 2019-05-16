@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+
+    <title>Hello, world!</title>
+    
+
+    <link rel="stylesheet" href="/styles/grid.css">
+
+    <style>      
+      .header {
+        height: 220px;
+        background-color: #8B008B;
+        color:#fff;
+        padding-left: 10px;
+        z-index: 100;
+      }
+
+      .client, .date, .invoice-info {
+        line-height: 3.5pt;
+      }
+
+      #price {
+        font-size: 32px;
+      }
+
+      hr {
+        color: #8B008B;
+        background-color: #8B008B;
+        height: 5px;        
+      }
+
+      table.td-no-border td {
+        border: none !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      thead {
+        height: 60px;
+      }
+
+      th {
+        text-align: left;
+        padding: 15px;        
+      }
+
+      td {
+        text-align: left;
+        padding: 15px;
+        border-bottom: 2px solid #c8d6e5;
+      }
+
+
+      th {
+        background-color: #8B008B;
+        color: white;
+      }
+
+
+      .bg-img {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bg-img:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 22%;
+        top: 0;
+        width: 53%;
+        height: 100%;
+        z-index: -100;
+        opacity: 0.15;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+
+      .total thead th {
+        background-color: #ffffff;
+        color: #000;
+        border-bottom-color: #001c20;
+        border-bottom: 2px solid;
+      }
+    </style>
+
+    
+  </head>
+  <body style="width: 80%">
+    <div class="bg-img">
+      <div class="bootstrap-wrapper">
+        <div class="container" style="border: 1px solid #000">
+              <div class="header">
+                  <table>
+                      <tr>
+                          <td style="width: 80%">
+                              <h1>INVOICE</h1>
+                             <img src="<%= user.image %>" alt="" srcset="" height="120px"
+                             style="padding-bottom: 20px">
+                          </td>
+                          <td>
+                            <h4>
+                              <%= user.company %>
+                            </h4>
+                            <h4>
+                              <%= user.email %>
+                            </h4>
+                            <h4>
+                              <%= user.address %>
+                            </h4>
+                          </td>
+                      </tr>                
+                  </table>
+      
+              </div>
+      
+              <br>
+      
+              <div class="bill-info">
+                  <div class="row">
+                      <div class="container">
+                          <table id="header" class="td-no-border">
+                              <tr>
+                                  <th>Billed To</th>
+                                  <th>Invoice Number</th>
+                                  <th>Date of Issue</th>
+                                  <th>Invoice Total</th>
+                              </tr>
+                              <tr>
+                                  <td>                            
+                                      <p><%= invoice.client_name %></p>
+                                      <p><%= invoice.client_email %></p>                                      
+                                  </td>
+      
+                                  <td>
+                                      <p>INV005</p>
+                                  </td>
+      
+                                  <td>
+                                      <p>2019</p>                                
+                                  </td>
+      
+                                  <td>
+                                      <p id="price">Rp <%= formatRupiah(invoice.total_price) %></p>
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+      
+              <br>
+              <hr>
+              <br>
+      
+              <div class="invoice-items">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Description</th>
+                              <th>Unit Cost</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% items.forEach(function(item, i, arr) { -%>
+                              <tr>
+                                  <td><%= item.name %></td>
+                                  <td>Rp <%= formatRupiah(item.price) %></td>
+                              </tr>
+                          <% }); -%>
+                      </tbody>
+                  </table>                      
+              </div>
+      
+              <div class="total">
+                <table>
+                  <thead>
+                  <tr>
+                    <th>Invoice Note</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>
+                      <h4><%= invoice.project_name %></h4>
+                      <p>
+                        <%= invoice.project_description %>
+                      </p>
+                      <img width="200" src="<%= invoice.attachment %>" alt="">
+                    </td>
+                    <td ></td>
+                    <td style="border-left: 1px solid #000"></td>
+                    <td></td>
+                    <td ></td>
+                    <td>
+                      <img src="https://media.istockphoto.com/photos/paid-red-rubber-stamp-picture-id477525839?k=6&m=477525839&s=612x612&w=0&h=yVcKnixW6fETgEtJ6sDBUTS2iyvXwkctUp_kuPY-gSw=" alt="" width="200">
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+          </div>
+      </div>
+      </div>
+      
+      
+  </body>
+</html>

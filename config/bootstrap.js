@@ -15,7 +15,8 @@ module.exports.bootstrap = async function() {
 
   if(seed) {
     const users = await User.createEach([
-      {id: '5cb31b59b7602f3b14c43a32', name: 'Adis Azhar Muhammad', email: 'adisazhar123@gmail.com', password: '123'}
+      {id: '5cb31b59b7602f3b14c43a32', name: 'Adis Azhar Muhammad', email: 'adisazhar123@gmail.com', password: '123', 'company': 'PT Software Silo',
+      'phone': '081327988997', 'image': ''}
     ]).fetch();      
     
     

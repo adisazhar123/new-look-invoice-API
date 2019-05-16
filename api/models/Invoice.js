@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-  // dontUseObjectIds: true,
   attributes: {
     client_name: { type: 'string', required: true },
     client_email: { type: 'string', required: false },
@@ -14,7 +13,9 @@ module.exports = {
     project_description: { type: 'string', required: false },
     invoice_status: { type: 'string', defaultsTo: 'unpaid' },
     due_date: { type: 'string', required: false },
-    total_price: { type: 'number', required: true},
+    total_price: { type: 'number', required: true },
+    attachment: { type: 'string', required: false },
+    theme: { type: 'string', required: false },
     items: {
       collection: 'item',
       via: 'invoice'
@@ -24,6 +25,8 @@ module.exports = {
     }
 
   },
+
+  schema: true,
 
   async beforeDestroy(criteria, proceed) {
     try {

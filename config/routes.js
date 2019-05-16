@@ -23,13 +23,16 @@ module.exports.routes = {
   '/api/invoices': 'InvoiceController.getAllInvoices',
   'post /api/register': [{action: 'user/register'}],
   'post /api/login': [{action: 'user/login'}],
-  'get /api/me': [{policy: 'isAuthorised'}, {action: 'user/myProfile'}],
+  'get /api/account': [{action: 'user/myProfile'}],
   'post /api/invoices': [{action: 'invoice/createInvoice'}],
   'delete /api/invoices/:invoice_id': [{action: 'invoice/deleteInvoice'}],
   'put /api/invoices/:invoice_id/paid': [{action: 'invoice/markAsPaid'}],
   'put /api/invoices/:invoice_id/unpaid': [{action: 'invoice/markAsUnpaid'}],
   'post /api/invoices/:invoice_id/email': [{action: 'mailer/emailToClient'}],
-  
+  'post /api/account': [{action: 'user/updateProfile'}],
+  'get /api/clients': [{action: "client/getClients"}],
+  'get /invoice123': [{action: "invoice/oneInvoice"}],
+
   'get /invoice': [{action: 'invoice/createInvoice'}],
   'get /mail': [{action: 'mailer/sendMail'}],
   'get /viewInvoice': [{action: 'invoice/viewInvoice'}],

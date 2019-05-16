@@ -13,7 +13,7 @@
     <style>      
       .header {
         height: 220px;
-        background-color: #0abde3;
+        background-color: #8b008b;
         color:#fff;
         padding-left: 10px;
         z-index: 100;
@@ -28,8 +28,8 @@
       }
 
       hr {
-        color: #0abde3;
-        background-color: #0abde3;
+        color: #8b008b;
+        background-color: #8b008b;
         height: 5px;        
       }
 
@@ -57,22 +57,14 @@
         border-bottom: 2px solid #c8d6e5;
       }
 
-      /* tr:nth-child(even){background-color: #f2f2f2} */
 
       th {
-        background-color: #0abde3;
+        background-color: #8b008b;
         color: white;
       }
 
-      /* .bg-img {
-        background-image: url('images/paid.png');
-        opacity: 0.2;
-      } */
-
-
       .bg-img {
         position: relative;
-        /* background: #5C97FF; */
         overflow: hidden;
       }
 
@@ -86,7 +78,6 @@
         height: 100%;
         z-index: -100;
         opacity: 0.15;
-        background-image: url('images/paid.png');
         background-repeat: no-repeat;
         background-position: 50% 0%;
         -ms-background-size: cover;
@@ -96,36 +87,39 @@
         background-size: cover;
       }
 
-
-      
-
+      .total thead th {
+        background-color: #ffffff;
+        color: #000;
+        border-bottom-color: #001c20;
+        border-bottom: 2px solid;
+      }
     </style>
 
     
   </head>
-  <body>    
+  <body style="width: 80%;">
     <div class="bg-img">
       <div class="bootstrap-wrapper">
-          <div class="container">
+          <div class="container" style="border: 1px solid #000">
               <div class="header">
                   <table>
                       <tr>
                           <td style="width: 80%">
                               <h1>INVOICE</h1>
-                              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="" srcset="" height="120px"
+                              <img src="<%= user.image %>" alt="" srcset="" height="120px"
                               style="padding-bottom: 20px">     
                           </td>
                           
                           <td>
-                              <p>
-                                  Company Owner
-                              </p>
-                              <p>
-                                  Company Email
-                              </p>
-                              <p>
-                                  Company Address
-                              </p>
+                              <h4>
+                                  <%= user.company %>
+                              </h4>
+                              <h4>
+                                  <%= user.email %>
+                              </h4>
+                              <h4>
+                                  <%= user.address %>
+                              </h4>
                           </td>
                       </tr>                
                   </table>
@@ -142,25 +136,35 @@
                                   <th>Billed To</th>
                                   <th>Invoice Number</th>
                                   <th>Date of Issue</th>
+                                  <th>Due Date</th>
                                   <th>Invoice Total</th>
                               </tr>
                               <tr>
                                   <td>                            
                                       <p><%= invoice.client_name %></p>
-                                      <p><%= invoice.client_email %></p>
-                                      <p>Pandugo II Blok Q-17 (todo)</p>                                
+                                      <p><%= invoice.client_email %></p>                                      
                                   </td>
       
                                   <td>
-                                      <p>8hudfgy98s(todo)</p>                            
+                                      <p>INV <%= invoice.id %></p>
                                   </td>
       
                                   <td>
-                                      <p>10/07/2014 (todo)</p>                                
+                                      <p>
+                                        <%=
+                                        new Date(invoice.created_at).toLocaleDateString('en-GB')
+                                        %>
+                                      </p>
                                   </td>
+
+                                <td>
+                                  <%=
+                                   invoice.due_date
+                                  %>
+                                </td>
       
                                   <td>
-                                      <p id="price">Rp <%= invoice.total_price %></p>
+                                      <p id="price">Rp <%= formatRupiah(invoice.total_price) %></p>
                                   </td>
                               </tr>
                           </table>
@@ -178,14 +182,13 @@
                           <tr>
                               <th>Description</th>
                               <th>Unit Cost</th>
-                              <th>Amount</th>
                           </tr>
                       </thead>
                       <tbody>
                           <% items.forEach(function(item, i, arr) { -%>
                               <tr>
                                   <td><%= item.name %></td>
-                                  <td><%= item.price %></td>
+                                  <td>Rp <%= formatRupiah(item.price) %></td>
                               </tr>
                           <% }); -%>
                       </tbody>
@@ -193,26 +196,45 @@
               </div>
       
               <div class="total">
-                  <div class="row">
-                      <div class="col-md-9">
-                          <h3>Invoice Note</h3>
-                          <h4><%= invoice.project_name %></h4>
-                          <p>
-                              <%= invoice.project_description %>
-                          </p>
-                      </div>
-                      <div class="col-md-3">
-                          <p>Subtotal: Rp 40 000</p>
-                          <p>Total: Rp 100 000</p>
-                          <p>Tax: </p>
-                      </div>
-                  </div>
+                <table>
+                  <thead>
+                  <tr>
+                    <th>Invoice Note</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>
+                      <h4><%= invoice.project_name %></h4>
+                      <p>
+                        <%= invoice.project_description %>
+                      </p>
+                      <img width="230" height="230" src="<%= invoice.attachment %>" alt="">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-left: 1px solid #000"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <img src="https://im2.ovipets.com/?img=proxy&url=http%3A%2F%2Fwww.icuk.net%2Fimages%2Flarge_icons%2Funpaid-stamp.png&p=73759" alt="" width="200">
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
               
           </div>
       </div>
       </div>
-      
-      
+
   </body>
 </html>

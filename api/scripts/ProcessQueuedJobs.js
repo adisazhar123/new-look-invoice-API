@@ -3,9 +3,11 @@ const kue = require('kue')
 
  const emailService = require('../services/SendEmail');
 
+console.log("Starting queue listener");
+
 queue.process('email', function(job, done){
-  console.log(job.data.invoice_data);
-  emailService.SendEmail(job.data.invoice_data, job.data.item_data);
+  console.log(job.data.user);
+  emailService.SendEmail(job.data.invoice_data, job.data.item_data, job.data.user);
   done();
 });
 

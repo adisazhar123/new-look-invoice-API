@@ -49,6 +49,8 @@ try {
   return;
 }//-•
 
+global.BASE_DIR = __dirname;
+global.BASE_URL = 'http://10.0.2.2:1337'
 
 // Start server
 sails.lift(rc('sails'));

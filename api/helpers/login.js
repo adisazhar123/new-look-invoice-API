@@ -30,6 +30,8 @@ module.exports = {
     // find account with email given
     const email = inputs.email;
     const user = await User.findOne({email});
+
+    console.log('founder user ',user);
     
     // no user with the email
     if (!user) {
