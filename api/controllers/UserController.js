@@ -17,6 +17,7 @@ function IsJsonString(str) {
 module.exports = {
     register: async(req, res) => {        
         let user;
+        console.log('register', req.body);
         try {
           user = await sails.helpers.register.with({
             email: req.body.email,
