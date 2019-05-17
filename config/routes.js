@@ -28,7 +28,7 @@ module.exports.routes = {
   'delete /api/invoices/:invoice_id': [{action: 'invoice/deleteInvoice'}],
   'put /api/invoices/:invoice_id/paid': [{action: 'invoice/markAsPaid'}],
   'put /api/invoices/:invoice_id/unpaid': [{action: 'invoice/markAsUnpaid'}],
-  'post /api/invoices/:invoice_id/email': [{action: 'mailer/emailToClient'}],
+  'post /api/invoices/:invoice_id/email/:user_id': [{action: 'mailer/emailToClient'}],
   'post /api/account': [{action: 'user/updateProfile'}],
   'get /api/clients/:user_id': [{action: "client/getClients"}],
   'get /invoice123': [{action: "invoice/oneInvoice"}],

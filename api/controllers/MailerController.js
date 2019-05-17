@@ -14,7 +14,8 @@ module.exports = {
         let invoice_items = await Invoice.find({id: req.param('invoice_id')}).populate('items');
         let invoice = invoice_items[0];
         let items = invoice_items[0].items;
-        job.createEmailJob(invoice, items);
+        let user = await User.find({id: req.param('user_id')});
+        job.createEmailJob(invoice, items, user);
         res.json({message: 'invoice emailed to client'});
     },
 
