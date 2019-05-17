@@ -30,7 +30,7 @@ module.exports.routes = {
   'put /api/invoices/:invoice_id/unpaid': [{action: 'invoice/markAsUnpaid'}],
   'post /api/invoices/:invoice_id/email': [{action: 'mailer/emailToClient'}],
   'post /api/account': [{action: 'user/updateProfile'}],
-  'get /api/clients': [{action: "client/getClients"}],
+  'get /api/clients/:user_id': [{action: "client/getClients"}],
   'get /invoice123': [{action: "invoice/oneInvoice"}],
 
   'get /invoice': [{action: 'invoice/createInvoice'}],
