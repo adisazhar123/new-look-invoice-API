@@ -72,16 +72,15 @@ module.exports = {
 
         let revenue = 0;
         let projects = 0;
-        if (typeof user[0].invoices === 'undefined') {
-
-        } else {
+        
+        if (typeof user[0].invoices !== 'undefined') {
             user[0].invoices.map((inv, idx) => {
-              if (inv.invoice_status == 'paid') {
-                revenue += parseInt(inv.total_price);
-              }
-            });
-            
-            projects = user[0].invoices.length;
+                if (inv.invoice_status == 'paid') {
+                  revenue += parseInt(inv.total_price);
+                }
+              });
+              
+              projects = user[0].invoices.length;
         }
 
         console.log(user);
